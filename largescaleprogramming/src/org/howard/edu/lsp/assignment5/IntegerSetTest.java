@@ -2,9 +2,9 @@ package org.howard.edu.lsp.assignment5;
 
 
 
-import org.howard.edu.assignment5.IntegerSetException;
+import org.howard.edu.lsp.assignment5.IntegerSetException;
 
-import org.howard.edu.assignment5.IntegerSet;
+import org.howard.edu.lsp.assignment5.IntegerSet;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
