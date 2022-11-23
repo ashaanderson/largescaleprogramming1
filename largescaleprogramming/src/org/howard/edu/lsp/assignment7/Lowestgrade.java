@@ -2,6 +2,7 @@ package org.howard.edu.lsp.assignment7;
 
 import java.util.*;
 
+
 import org.howard.edu.lsp.assignment7.Strategy.AverageStrategy;
 
 
@@ -17,7 +18,7 @@ public class Lowestgrade implements AverageStrategy {
     */
   public int compute(List<Integer> grades) throws EmptyListException{
     if (grades.size() < 3){
-      throw new EmptyListException("List is Empty!");
+      throw new EmptyListException();
     }
     int gradesSum = 0;
     grades.remove(grades.indexOf(Collections.min(grades)));
