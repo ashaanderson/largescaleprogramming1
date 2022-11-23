@@ -2,6 +2,7 @@ package org.howard.edu.lsp.assignment7;
 
 import java.util.*;
 
+
 import org.howard.edu.lsp.assignment7.Strategy.AverageStrategy;
 
 
@@ -19,7 +20,7 @@ public class averagegrade implements AverageStrategy {
     
   public int compute(List<Integer> grades) throws EmptyListException{
     if (grades.size() == 0){
-      throw new EmptyListException("List is empty!");
+      throw new EmptyListException();
     }
     int gradesSum = 0;
     for (int i = 0; i < grades.size(); i++){
