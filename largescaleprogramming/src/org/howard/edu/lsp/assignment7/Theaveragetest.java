@@ -1,6 +1,10 @@
 package org.howard.edu.lsp.assignment7;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.*;
 
@@ -74,29 +78,36 @@ public class Theaveragetest {
 	    assertEquals(207, ctx.computeAverage(listNumbers3));
 	  }
 
-	  @Test 
-	  public void testNormalComputeException() throws Exception{
-	    List<Integer> listNumbers = new ArrayList<>();
-	    Theaverage ctx = new Theaverage();
-	    ctx.setAverageStrategy(new averagegrade());
-	    ctx.computeAverage(listNumbers);
-	  }
+	
+	  
+	  
+	  @Test
+		@DisplayName("Test cases for when both strategies (TotalAverageStrategy & DroppedAverageStrategy) throw an EmptyListException")
+		public void testEmptyListException() {
+			Theaverage average = new Theaverage();
+			List<Integer> gradeset = new ArrayList<Integer>();
+			
+			average.setAverageStrategy(new averagegrade());
+			EmptyListException exception = assertThrows(EmptyListException.class, () -> {
+				System.out.println(average.computeAverage(gradeset));
+				});
+			String expectedMessage = "List is Empty!";
+			String actualMessage = exception.getMessage();
+			assertTrue(actualMessage.contains(expectedMessage));
+			
+			
+			List<Integer> gradeset2 = new ArrayList<Integer>();
+			
+			average.setAverageStrategy(new Lowestgrade());
+			EmptyListException exception2 = assertThrows(EmptyListException.class, () -> {
+				System.out.println(average.computeAverage(gradeset2));
+				});
+			
+			String expectedMessage2 = "List is Empty!";
+			String actualMessage2 = exception2.getMessage();
+			assertTrue(actualMessage2.contains(expectedMessage2));
+			
+		}
 
-	  @Test 
-	  public void testModifiedComputeException() throws Exception{
-	    List<Integer> listNumbers = new ArrayList<>();
-	    listNumbers.add(1);
-	    listNumbers.add(2);
-	    Theaverage ctx = new Theaverage();
-	    ctx.setAverageStrategy(new Lowestgrade());
-	    ctx.computeAverage(listNumbers);
-
-	    List<Integer> listNumbers2 = new ArrayList<>();
-	    listNumbers2.add(104);
-	    ctx.computeAverage(listNumbers2);
-
-	    List<Integer> listNumbers3 = new ArrayList<>();
-	    ctx.computeAverage(listNumbers3);
-	  }
 	  
 }
