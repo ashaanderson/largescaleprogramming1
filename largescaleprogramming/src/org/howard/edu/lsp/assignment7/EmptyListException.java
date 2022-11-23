@@ -8,7 +8,7 @@ public class EmptyListException extends Exception {
 	    * @param  the  error message
 	    * @return None
 	    */
-	  public EmptyListException(String message) {
-	    super(message);
+	  public EmptyListException() {
+	    super("List is Empty!");
 	  }
 	}
